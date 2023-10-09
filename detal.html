@@ -1,9 +1,30 @@
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const params = new URLSearchParams(window.location.search);
+        const storyId = params.get("id");
+        
+        // Lấy thông tin truyện từ một nguồn dữ liệu (ví dụ: một mảng dữ liệu hoặc AJAX request)
+        const story = getStoryById(storyId); // Hàm getStoryById() cần được định nghĩa
+        
+        if (story) {
+            const storyDetails = document.getElementById("story-details");
+            storyDetails.innerHTML = `
+                <h2>${story.title}</h2>
+                <p>Tác giả: ${story.author}</p>
+                <p>${story.description}</p>
+                <p>Nội dung truyện: ${story.content}</p>
+            `;
+        } else {
+            alert("Truyện không tồn tại.");
+        }
+    });
+</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Web Truyện</title>
+    <title>Chi Tiết Truyện</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -45,39 +66,28 @@
             margin-top: 10px;
             color: #333;
         }
+
+        .story-content {
+            margin-top: 20px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
     </style>
 </head>
 <body>
     <div id="header">
-        <h1>Trang Web Truyện</h1>
+        <h1>Chi Tiết Truyện</h1>
     </div>
     <div id="content">
         <div class="story">
-            <h2 class="story-title">Tên Truyện 1</h2>
+            <h2 class="story-title">Tên Truyện</h2>
             <p class="story-author">Tác giả: Tên tác giả</p>
             <p class="story-description">Mô tả ngắn về truyện...</p>
+            <div class="story-content">
+                <!-- Nội dung truyện -->
+                <p>Đây là nội dung truyện...</p>
+            </div>
         </div>
-        <div class="story">
-            <h2 class="story-title">Tên Truyện 2</h2>
-            <p class="story-author">Tác giả: Tên tác giả</p>
-            <p class="story-description">Mô tả ngắn về truyện...</p>
-        </div>
-        <div class="story">
-            <h2 class="story-title">Tên Truyện 3</h2>
-            <p class="story-author">Tác giả: Tên tác giả</p>
-            <p class="story-description">Mô tả ngắn về truyện...</p>
-        </div>
-        <div class="story">
-            <h2 class="story-title">Tên Truyện 4</h2>
-            <p class="story-author">Tác giả: Tên tác giả</p>
-            <p class="story-description">Mô tả ngắn về truyện...</p>
-        </div>
-        <div class="story">
-            <h2 class="story-title">Tên Truyện 5</h2>
-            <p class="story-author">Tác giả: Tên tác giả</p>
-            <p class="story-description">Mô tả ngắn về truyện...</p>
-        </div>
-        <!-- Thêm các truyện khác tại đây -->
     </div>
 </body>
 </html>
